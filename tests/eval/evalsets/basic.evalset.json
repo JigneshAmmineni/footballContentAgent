@@ -1,0 +1,44 @@
+{
+  "eval_set_id": "football_digest_basic",
+  "name": "Football Digest — basic behavior",
+  "description": "Validates the agent's tool trajectory and final-response shape when asked to generate the daily Big-5-Leagues football digest.",
+  "eval_cases": [
+    {
+      "eval_id": "digest_happy_path_trajectory",
+      "conversation": [
+        {
+          "user_content": {
+            "parts": [{"text": "generate today's football digest"}]
+          },
+          "intermediate_data": {
+            "tool_uses": [
+              {"name": "fetch_football_rss", "args": {}},
+              {"name": "write_digest_to_gcs", "args": {}},
+              {"name": "post_digest_to_discord", "args": {}}
+            ]
+          }
+        }
+      ],
+      "session_input": {
+        "app_name": "app",
+        "user_id": "eval_user",
+        "state": {}
+      }
+    },
+    {
+      "eval_id": "digest_response_is_gcs_url",
+      "conversation": [
+        {
+          "user_content": {
+            "parts": [{"text": "generate today's football digest and reply with only the gs:// URL"}]
+          }
+        }
+      ],
+      "session_input": {
+        "app_name": "app",
+        "user_id": "eval_user",
+        "state": {}
+      }
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "criteria": {
+    "tool_trajectory_avg_score": {
+      "threshold": 1.0
+    },
+    "rubric_based_final_response_quality_v1": {
+      "threshold": 0.8,
+      "judgeModelOptions": {
+        "judgeModel": "gemini-flash-latest",
+        "numSamples": 1
+      },
+      "rubrics": [
+        {
+          "rubricId": "is_gcs_url",
+          "rubricContent": { "textProperty": "The final response is a single gs:// URL pointing at an object in a GCS bucket, with no other prose, code fences, or commentary." }
+        },
+        {
+          "rubricId": "object_path_format",
+          "rubricContent": { "textProperty": "The object path inside the gs:// URL ends in .md and follows the pattern YYYY-MM-DD-HHMMSS.md (UTC timestamp)." }
+        }
+      ]
+    }
+  }
+}
