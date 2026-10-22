@@ -35,7 +35,7 @@ Vertex AI Agent Runtime  (ADK LlmAgent, scaled to zero between runs)
 
 - **3-tool agent** ([`app/tools.py`](app/tools.py)): `fetch_football_rss`, `write_digest_to_gcs`, `post_digest_to_discord`. Discord post strips `Source:` lines for a cleaner feed while GCS keeps the full sourced version. Auto-chunks at blank-line boundaries when over Discord's 2000-char per-message limit.
 - **Tool-trajectory eval** ([`tests/eval/`](tests/eval/)): two cases via `agents-cli eval run` — trajectory order check + final-response shape rubric.
-- **8 unit tests** ([`tests/unit/test_tools.py`](tests/unit/test_tools.py)) cover chunking, source-stripping, and a regression-blocking User-Agent assertion (Discord/Cloudflare returns 403 `error 1010` to the default Python-urllib UA).
+- **7 unit tests** ([`tests/unit/test_tools.py`](tests/unit/test_tools.py)) cover chunking, source-stripping, and a regression-blocking User-Agent assertion (Discord/Cloudflare returns 403 `error 1010` to the default Python-urllib UA).
 - **Scaled to zero** between runs via a one-shot REST PATCH to `spec.deploymentSpec.minInstances=0`. Eats a ~30–60s cold start on the daily fire; saves $50–$300/mo of idle compute.
 - **Reproducible** end-to-end — see [DESIGN_SPEC.md → Setup](DESIGN_SPEC.md#setup) for the full deployment recipe.
 
@@ -78,7 +78,7 @@ app/
   agent_runtime_app.py      # AgentEngineApp wrapper (telemetry + feedback)
   app_utils/                # telemetry + typing helpers
 tests/
-  unit/test_tools.py        # 8 tool-level tests (chunking, UA, source-stripping)
+  unit/test_tools.py        # 7 tool-level tests (chunking, UA, source-stripping)
   integration/              # ADK Runner + AgentEngineApp integration tests
   eval/evalsets/*.json      # tool-trajectory + final-response eval cases
 DESIGN_SPEC.md              # design + setup + operational notes

@@ -15,7 +15,7 @@ from app.config import FEEDS
 logger = logging.getLogger(__name__)
 
 DISCORD_MAX_CHARS = 1900
-DISCORD_USER_AGENT = "football-news-agent/0.1 (+https://github.com/anthropic; urllib)"
+DISCORD_USER_AGENT = "football-news-agent/0.1 (+https://github.com/JigneshAmmineni/footballContentAgent; urllib)"
 
 
 def fetch_football_rss() -> list[dict]:

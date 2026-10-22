@@ -1,9 +1,9 @@
 [project]
 name = "football-news-agent"
 version = "0.1.0"
-description = ""
+description = "Daily Big-5-Leagues football digest agent on Google ADK + Vertex AI Agent Runtime: RSS in, GCS archive + Discord post out."
 authors = [
-    {name = "Your Name", email = "your@email.com"},
+    {name = "Jignesh Ammineni"},
 ]
 dependencies = [
     "google-adk>=1.15.0,<2.0.0",
@@ -11,7 +11,7 @@ dependencies = [
     "gcsfs>=2024.11.0",
     "google-cloud-logging>=3.12.0,<4.0.0",
     "google-cloud-aiplatform[agent-engines,evaluation]>=1.130.0",
-    "google-cloud-storage>=2.18.0,<3.0.0",
+    "google-cloud-storage>=2.18.0,<4.0.0",
     "feedparser>=6.0.11,<7.0.0",
     "python-dotenv>=1.0.0,<2.0.0",
     "protobuf>=6.31.1,<7.0.0",
@@ -61,7 +61,7 @@ known-first-party = ["app", "frontend"]
 # See: https://docs.astral.sh/ty/
 
 [tool.ty.environment]
-python-version = "3.10"
+python-version = "3.11"
 
 [tool.ty.src]
 exclude = [".venv/**"]
@@ -113,6 +113,3 @@ cicd_runner = "skip"
 include_data_ingestion = false
 
 datastore = "none"
-
-agent_guidance_filename = "CLAUDE.md"
-
